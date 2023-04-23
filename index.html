@@ -47,12 +47,25 @@
 	</style>
 </head>
 <body>
-	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>
+	<form method="post" action="login.php">
 		<label for="username">Username:</label>
 		<input type="text" name="username" id="username" required>
 		<label for="password">Password:</label>
 		<input type="password" name="password" id="password" required>
 		<input type="submit" value="Login">
 	</form>
+
+	<?php
+		if ($_SERVER["REQUEST_METHOD"] == "POST") {
+			$username = $_POST["username"];
+			$password = $_POST["password"];
+
+			// Validate username and password here
+
+			// Redirect user to dashboard if login is successful
+			header("Location: dashboard.php");
+			exit();
+		}
+	?>
 </body>
 </html>
